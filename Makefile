@@ -10,11 +10,12 @@ include $(INCLUDE_DIR)/kernel.mk
 
 PKG_NAME:=fullconenat
 PKG_RELEASE:=1
+PKG_VERSION:=0cf3b48fd7d2fa81d0297d1fff12bbd0580fc435
 
 PKG_SOURCE_DATE:=2019-10-21
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/Chion82/netfilter-full-cone-nat.git
-PKG_SOURCE_VERSION:=0cf3b48fd7d2fa81d0297d1fff12bbd0580fc435
+PKG_SOURCE_URL:=https://github.com/Chion82/netfilter-full-cone-nat/archive/
+PKG_SOURCE:=$(PKG_VERSION).zip
+PKG_HASH:=bccba8933d6902f84df252e0b1a9a76c9be7e500fbf78413ef674064cb4e6519
 
 PKG_LICENSE:=GPL-2.0
 PKG_LICENSE_FILES:=LICENSE
