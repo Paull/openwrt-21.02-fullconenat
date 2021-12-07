@@ -15,7 +15,7 @@
  	FW3_LIST("masq_src",           network,  zone,     masq_src),
  	FW3_LIST("masq_dest",          network,  zone,     masq_dest),
  
-+	FW3_LIST("fullcone",           bool,     zone,     fullcone),
++	FW3_OPT("fullcone",            bool,     zone,     fullcone),
 +
  	FW3_OPT("extra",               string,   zone,     extra_src),
  	FW3_OPT("extra_src",           string,   zone,     extra_src),
