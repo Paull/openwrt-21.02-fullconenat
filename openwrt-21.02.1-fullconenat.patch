@@ -41,12 +41,12 @@
 +				   and ensure that both src and dest loops run at least once,
 +				   even if there are no relevant addresses */
 +				for (first_src = true, msrc = NULL;
-+				     (msrc = next_addr(msrc, &zone->fullcone,
++				     (msrc = next_addr(msrc, &zone->masq_src,
 +					                   handle->family, false)) || first_src;
 +				     first_src = false)
 +				{
 +					for (first_dest = true, mdest = NULL;
-+					     (mdest = next_addr(mdest, &zone->fullcone,
++					     (mdest = next_addr(mdest, &zone->masq_dest,
 +						                    handle->family, false)) || first_dest;
 +					     first_dest = false)
 +					{
