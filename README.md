@@ -21,7 +21,7 @@ make menuconfig
 make V=s
 ```
 
-Referfences
+References
 ---
 - fullconenat module for iptables is from [Chion82](https://github.com/Chion82/netfilter-full-cone-nat), I'v tested and it's compatible from kernel 4.14 to 5.4
 - fullconenat-fw3.patch for kernel 5.4 is modified from [LGA1150's patch](https://github.com/LGA1150/fullconenat-fw3-patch)
