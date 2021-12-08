@@ -3,6 +3,8 @@
 Compile
 ---
 ```
+# cd to OpenWrt source path
+
 # Download 952-net-conntrack-events-support-multiple-registrant.patch to target/linux/generic/hack-5.4/
 wget -P target/linux/generic/hack-5.4/ https://github.com/Paull/openwrt-fullconenat/raw/master/952-net-conntrack-events-support-multiple-registrant.patch
 
@@ -10,7 +12,6 @@ wget -P target/linux/generic/hack-5.4/ https://github.com/Paull/openwrt-fullcone
 mkdir package/network/config/firewall/patches
 wget -P package/network/config/firewall/patches/ https://github.com/Paull/openwrt-fullconenat/raw/master/fullconenat-fw3.patch
 
-# cd to OpenWrt source path
 # Clone this repo
 git clone -b master --single-branch https://github.com/Paull/openwrt-fullconenat package/fullconenat
 
