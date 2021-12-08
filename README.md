@@ -1,11 +1,14 @@
-## Netfilter and iptables extension for [FULLCONENAT](https://github.com/Chion82/netfilter-full-cone-nat) target ported to OpenWrt.
+## Netfilter and iptables extension for [FULLCONENAT](https://github.com/Chion82/netfilter-full-cone-nat) target ported to OpenWrt 21.02.
 
 Compile
 ---
 ```
-# Download fullconenat.patch to package/network/config/firewall/patches/
+# Download 952-net-conntrack-events-support-multiple-registrant.patch to target/linux/generic/hack-5.4/
+wget -P target/linux/generic/hack-5.4/ https://github.com/Paull/openwrt-fullconenat/raw/master/952-net-conntrack-events-support-multiple-registrant.patch
+
+# Download fullconenat-fw3.patch to package/network/config/firewall/patches/
 mkdir package/network/config/firewall/patches
-wget -P package/network/config/firewall/patches/ https://github.com/Paull/openwrt-fullconenat/raw/master/openwrt-21.02.1-fullconenat.patch
+wget -P package/network/config/firewall/patches/ https://github.com/Paull/openwrt-fullconenat/raw/master/fullconenat-fw3.patch
 
 # cd to OpenWrt source path
 # Clone this repo
@@ -18,16 +21,8 @@ make menuconfig
 make V=s
 ```
 
-Usage
+Referfences
 ---
-You can apply [this patch](https://github.com/LGA1150/fullconenat-fw3-patch) to OpenWrt's Firewall3 (Recommended).
-
-Or manually add the following rules to `/etc/firewall.user`
-```
-iptables -t nat -A zone_wan_prerouting -j FULLCONENAT
-iptables -t nat -A zone_wan_postrouting -j FULLCONENAT
-```
-
-Workaround for conflicting with module `nf_conntrack_netlink`
----
-This module uses conntrack events to register a callback function. In the same netns, only one callback method can be registered, that causes conflicts with `nf_conntrack_netlink`, which also uses conntrack events. Qualcomm Shortcut FE has introduced a patch to allow multiple callbacks to be registered. To apply, put [this patch](https://github.com/coolsnowwolf/lede/blob/master/target/linux/generic/hack-4.14/952-net-conntrack-events-support-multiple-registrant.patch) into `target/linux/generic/hack-4.14`.
+- fullconenat module for iptables is from [Chion82](https://github.com/Chion82/netfilter-full-cone-nat), I'v tested and it's compatible from kernel 4.14 to 5.4
+- fullconenat-fw3.patch for kernel 5.4 is modified from [LGA1150's patch](https://github.com/LGA1150/fullconenat-fw3-patch)
+- 952-net-conntrack-events-support-multiple-registrant.patch for kernel 5.4 is from [coolsnowwolf/lede](https://github.com/coolsnowwolf/lede/blob/master/target/linux/generic/hack-5.4/952-net-conntrack-events-support-multiple-registrant.patch)
